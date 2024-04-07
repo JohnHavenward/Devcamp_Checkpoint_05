@@ -20,23 +20,35 @@ Para definir un condicional se debe usar la palabra clave `if` seguida de la exp
 
 Vemos un ejemplo a continuación:
 
+```python
+cantidad_hojas = 12
+
+if cantidad_hojas < 50:
+    print("Quedan pocas hojas")
+    
+# Quedan pocas hojas
+```
+</br>
+
+La condición a evaluar también puede ser una variable. Esta puede ser un número o incluso una cadena en cuyo caso solo el número `0` y una cadena vacía `""` serán interpretados como `False`, y cualquier otro valor será evaluado como `True`. Vemos un ejemplo de ello a continuación:
 
 ```python
-x = 5
-if x == 5:
-    print("Es 5")
-elif x == 6:
-    print("Es 6")
-elif x == 7:
-    print("Es 7")
-else:
-    print("Es otro")
+lluvia = True
+
+if lluvia:
+    print("Está lloviendo")
+    
+# Está lloviendo
 ```
+</br>
+
 
 #### OPERADORES DE COMPARACIÓN
 
-Expresión | Operación
-:-------: | ---------
+Existen varios tipos de operadores para poder comparar expresiones y se muestran en la siguiente tabla:
+
+Símbolo | Operación
+:-----: | ---------
 == | igual
 != | no Igual
 < | menor que
@@ -45,20 +57,72 @@ Expresión | Operación
 \>= | mayor o igual que
 </br>
 
+Podemos ver varios ejemplos a continuación:
+
+```python
+print("abc" == "ABC") #False
+
+print("Entrar" != "Salir") #True
+
+print(3 < 8) #True
+
+print(7 <= 5) #False
+
+print("a" > "z") #False
+
+print(4 >= 4) #True
+```
+</br>
+
 
 ### ELIF
 
-En caso de que la primera condición no se cumpla, podemos agregar 
+En caso de que la primera condición no se cumpla y deseemos agregar condiciones alternativas a evaluar podemos hacerlo mediante la palabra clave `elif`.
+
+Se pueden añadir tantos bloques elif como se desee pero estos se evalúan en el orden en el que han sido definidos en el condicional y en ningún caso se ejecutará más de uno. El primero en cumplir la condición será el único ejecutado.
+
+
+```python
+porcentaje_carga = 43
+
+if porcentaje_carga < 5:
+    print("Queda muy poca batería")
+elif porcentaje_carga < 25:
+    print("Queda menos del 25% de la batería")
+elif porcentaje_carga < 50:
+    print("Queda menos del 50% de la batería")
+elif porcentaje_carga < 75:
+    print("Queda menos del 75% de la batería")
+
+# Queda menos del 50% de la batería
+```
+</br>
+
 
 ### ELSE
 
-En caso de que no se cumpla ninguna de las condiciones anteriores po
+Podemos agregar un bloque de código que se ejecute en caso de que no se cumpla ninguna de las condiciones anteriores. Para ello debemos hacer uso de la palabra clave `else` sin ninguna condición asociada.
 
-### CONDICIONALES COMPUESTOS
+Solo puede haber un bloque *else* en un condicional y siempre debe estar definido al final de este. Podemos ver un ejemplo a continuación:
 
-#### OPERADORES LÓGICOS
+```python
+color_objeto = "morado"
 
-Estos operadores evalúan dos condiciones y devuelven `True` en función de la operación representada. En el caso del operador `not` solo se evalúa una condición.
+if color_objeto == "azul":
+    print("El objeto es azul")
+elif color_objeto == "rojo":
+    print("El objeto es rojo")
+else:
+    print("El objeto no es ni azul ni rojo")
+    
+# El objeto no es ni azul ni rojo
+```
+</br>
+
+
+### OPERADORES LÓGICOS
+
+Estos operadores evalúan dos condiciones y devuelven `True` en función de la operación representada. En el caso del operador `not` solo se evalúa una condición. Podemos ver en la tabla siguiente la operación realizada por cada uno:
 
 Expresión | Operación
 :-------: | ---------
@@ -66,18 +130,90 @@ and | ambas condiciones se cumplen
 or | al menos una de las dos condiciones se cumple
 ^ | una condición se cumple y la otra no 
 not | la condición no se cumple
+</br>
 
+A continuación se muestran algunos ejemplos de su uso
 
 ```python
-a = 200
-b = 33
-c = 500
-if a > b and c > a:
-  print("Both conditions are True")
+print(True and True) #True
+print(True and False) #False
+print(False and False) #False
+
+print(True or True) #True
+print(True or False) #True
+print(False or False) #False
+
+print(True ^ True) #False
+print(True ^ False) #True
+print(False ^ False) #False
+
+print(not True) #False
+print(not False) #True
 ```
+</br>
+
+Podemos ver el uso del operador lógico `not` en el siguiente condicional:
+
+```python
+acceso_permitido = False
+
+if not acceso_permitido:
+    print("No puedes pasar")
+    
+# No puedes pasar
+``` 
+</br>
+
+
+### CONDICIONALES COMPUESTOS
+
+Los condicionales compuestos nos permiten evaluar múltiples condiciones a la vez. Para ello debemos usar operadores lógicos tal y como se observa en el siguiente ejemplo:
+
+```python
+primera_condicion = True
+segunda_condicion = True
+tercera_condicion = False
+
+if primera_condicion and segunda_condicion and tercera_condicion:
+    print("Se cumplen todas condiciones")
+else:
+    print("No se cumplen todas condiciones")
+    
+# No se cumplen todas condiciones
+```
+</br>
+
+A continuación podemos ver otro ejemplo de condicional compuesto:
+
+```python
+altura_viajero = 120
+edad_viajero = 9
+
+if altura_viajero >= 130 or edad_viajero >= 8:
+    print("El viajero puede montarse en la atracción")
+else:
+    print("El viajero no puede montarse en la atracción")
+    
+# El viajero puede montarse en la atracción
+```
+</br>
+
+
 ### OPERADOR TERNARIO
 
+Mediante un operador ternario podemos definir una condición y el código a ejecutar cuando se cumple al igual que otro alternativo para cuando no se cumple. En resumen se trata de una expresión if-else escrita de forma abreviada en una sola línea. En un operador ternario Siempre se ejecuta uno de los dos códigos y su estructura es la siguiente:
 
+> [código si se cumple] &nbsp;`if`&nbsp; [condición] &nbsp;`else`&nbsp; [código si no se cumple]
+
+</br>
+
+A continuación podemos ver un ejemplo de uso:
+
+```python
+edad_usuario = 27
+
+print("El usuario es mayor de edad" if edad_usuario >= 18 else "El usuario es menor de edad") #El usuario es mayor de edad
+```
 </br></br></br>
 
 
