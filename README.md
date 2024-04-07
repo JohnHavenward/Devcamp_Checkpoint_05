@@ -498,11 +498,36 @@ Para mayor información acerca del uso de argumentos en python consultar este [e
 
 # FUNCIONES LAMBDA
 
-Las funciones lambda, también llamadas anónimas, son una forma abreviada de definir una función que normalmente ocupan una única línea de código.
+Las funciones lambda, también llamadas anónimas, son una forma abreviada de definir una función que normalmente ocupan una única línea de código. Para su definición se usa la palabra clave `lambda` tal y como vemos en el siguiente ejemplo:
 
-Deben ser asociadas a un variable para poder ser llamadas posteriormente
+```python
+producto = lambda a, b, c : a * b * c
 
-Para su definición se usa la palabra clave `lambda` y debe ser asociada a una variable.
+print(producto(4, 3, 6)) #72
+```
+</br>
+
+
+En el ejemplo siguiente se muestra el código equivalente usando una función normal de python:
+
+```python
+def producto(a, b, c):
+    return a * b * c
+    
+print(producto(4, 3, 6)) #72
+```
+</br>
+
+
+La sintaxis de una función lambda es la siguiente:
+
+```python
+variable = lambda argumentos : expresión
+```
+</br>
+
+
+En el caso de las funciones lambda se omite el paso de ser nombradas, por lo que para poder ser llamadas posteriormente deben estar siempre asociadas a una variable. Al llamar a esta variable debemos pasar los argumentos como si se tratase de  función normal de python.
 
 Su principal limitación frente a una función normal de python es que solo pueden evaluar una única expresión. Pese a ello, las funciones lambda también pueden aceptar cualquier número de argumentos e igualmente permiten:
 
@@ -511,68 +536,32 @@ Su principal limitación frente a una función normal de python es que solo pued
 - el uso de `*args` (*argument unpacking*)
 - el uso de `**kwargs` (*keyword arguments*)
 
-
-
-En el caso de las funciones lambda se omite el paso de tener que nombrar la función en su definición, por lo que para poder ser llamada posteriormente debe estar asociada a una variable. Al llamar a la variable debemos pasar los argumentos como en el caso de una función normal.
-
-
-```python
-suma = lambda a, b : a + b
-
-print(suma(4, 3)) #7
-```
 </br>
 
-En el ejemplo siguiente se muestra un función normal de python equivalente en su función
+
+En el siguiente ejemplo la función lambda acepta un número indeterminado de argumentos mediante el uso de `*args` y además podemos comprobar que es posible declarar la función y llamarla en la misma línea:
 
 ```python
-def suma(a, b):
-    return a + b
-    
-print(suma(4, 3)) #7
+print((lambda *args: sum(args))(10, 3)) #13
+
+print((lambda *args: sum(args))(8, 9, 4)) #21
 ```
 </br>
 
 
-
-
-## SINTAXIS
+Es posible combinar ambos tipos de funciones. En el ejemplo siguiente una función lambda es retornada al llamar a una función normal de python:
 
 ```python
-variable = lambda argumentos : expresión
+def potencia(n):
+  return lambda a : a ** n
+
+elevar_al_cuadrado = potencia(2)
+elevar_al_cubo = potencia(3)
+
+print(elevar_al_cuadrado(5)) #25
+
+print(elevar_al_cubo(2)) #8
 ```
-</br>
-
-
-
-
-
-Es posible declarar la función lambda y llamarla en la misma línea.
-
-```python
-mi_suma = (lambda a, b: a + b)(2, 4)
-```
-
-
-
-
-
-
-
-En el ejemplo siguiente la función lambda se combina con una función normal
-
-```python
-def myfunc(n):
-  return lambda a : a * n
-
-mydoubler = myfunc(2)
-mytripler = myfunc(3)
-
-print(mydoubler(11)) 
-print(mytripler(11))
-```
-
-
 </br></br></br>
 
 
