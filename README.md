@@ -203,8 +203,9 @@ else:
 
 Mediante un operador ternario podemos definir una condición y el código a ejecutar cuando se cumple al igual que otro alternativo para cuando no se cumple. En resumen se trata de una expresión if-else escrita de forma abreviada en una sola línea. En un operador ternario Siempre se ejecuta uno de los dos códigos y su estructura es la siguiente:
 
-> [código si se cumple] &nbsp;`if`&nbsp; [condición] &nbsp;`else`&nbsp; [código si no se cumple]
-
+```python
+[código si se cumple] if [condición] else [código si no se cumple]
+```
 </br>
 
 A continuación podemos ver un ejemplo de uso:
@@ -212,7 +213,9 @@ A continuación podemos ver un ejemplo de uso:
 ```python
 edad_usuario = 27
 
-print("El usuario es mayor de edad" if edad_usuario >= 18 else "El usuario es menor de edad") #El usuario es mayor de edad
+print("El usuario es mayor de edad" if edad_usuario >= 18 else "El usuario es menor de edad")
+
+#El usuario es mayor de edad
 ```
 </br></br></br>
 
@@ -283,21 +286,32 @@ Las comprensiones de listas, sets o diccionarios son una herramienta muy útil p
 
 Nos permiten hacer todo ello en una sola línea de código tal como vemos en el siguiente ejemplo, en el cual 
 
-###### Ejemplo de uso
 ```python
-# ejemplo
-```
-En caso de no usar una lista por comprensión el código es más largo y no resulta tan fácil de leer a simple vista. Vemos a continuación un bloque de código equivalente.
+lista_numeros = [7, 13, 10, 15, 8, 51, 32]
 
-###### Código equivalente
-```python
-cuadrados = []
-for i in range(5):
-    cuadrados.append(i**2)
-#[0, 1, 4, 9, 16]
+numeros_impares = [numero for numero in lista_numeros if numero % 2 != 0]
+
+print(numeros_impares)
+
+# [7, 13, 15, 51]
 ```
 </br>
 
+En caso de no usar una lista por comprensión el código es más largo y no resulta tan fácil de leer a simple vista. Vemos a continuación un bloque de código equivalente.
+
+```python
+lista_numeros = [7, 13, 10, 15, 8, 51, 32]
+numeros_impares = []
+
+for numero in lista_numeros:
+    if numero % 2 != 0:
+        numeros_impares.append(numero)
+
+print(numeros_impares)
+
+# [7, 13, 15, 51]
+```
+</br>
 
 
 ### SINTAXIS
@@ -309,19 +323,8 @@ lista_nueva = [expresión for elemento in iterable if condición]
 ```
 </br>
 
-#### *Expresión*
-
-Es la expresión que se ejecuta cuando el elemento iterado cumple la condición. Esta expresión también puede ser una llamada a una función y no tiene por qué guardar relación con el elemento en cuestión, pudiendo ser una palabra o valor concreto por ejemplo.
-
-
-```python
-def eleva_al_2(i):
-    return i**2
-
-cuadrados = [eleva_al_2(i) for i in range(5)]
-#[0, 1, 4, 9, 16]
-```
-</br>
+A continuación se explica uno a uno cada uno de los componentes de una lista por comprensión.
+</br></br>
 
 
 #### *Lista nueva*
@@ -332,11 +335,43 @@ Es la nueva lista que se crea. La lista inicial no se ve alterada.
 
 #### *Iterable*
 
-Es la lista de la que se parte. pero también puede ser cualquier objeto iterable como una tupla, un set o un rango.
- 
+Es la lista de la que se parte pero también puede ser cualquier objeto iterable como una tupla, un set o un rango.
+
+En el siguiente ejemplo vemos el uso de un rango.
 
 ```python
-new_list = [x.upper() for x in fruits]
+siete_numeros = [num for num in range(1,8)]
+
+print(siete_numeros)
+
+# [1, 2, 3, 4, 5, 6, 7]
+```
+</br>
+
+
+#### *Elemento*
+
+Es el nombre dado al elemento en cada iteración.
+</br></br>
+
+
+#### *Expresión*
+
+Es la expresión que se ejecuta cuando el elemento iterado cumple la condición. Esta no tiene por qué guardar relación con el elemento iterado, pudiendo ser una palabra o valor concreto por ejemplo.
+
+La expresión también puede ser una llamada a una función como en el siguiente ejemplo:
+
+```python
+lista_numeros = [0, 1, 2, 3, 4, 5]
+
+def eleva_al_cubo(n):
+    return n**3
+
+numeros_cubos = [eleva_al_cubo(numero) for numero in lista_numeros if numero != 0]
+
+print(numeros_cubos)
+
+# [1, 8, 27, 64, 125]
 ```
 </br>
 
@@ -345,15 +380,15 @@ new_list = [x.upper() for x in fruits]
 
 La condición es opcional y puede ser omitida en la lista de comprensión. En tal caso la expresión es ejecutada para todos los elementos del objeto iterable.
 
-###### Ejemplo
 ```python
-frase = "El perro de san roque no tiene rabo"
-erres = [i for i in frase if i == 'r']
-#['r', 'r', 'r', 'r']
+mi_frase = "La casa es roja"
+
+lista_letras = [letra.upper() for letra in mi_frase if letra != ' ']
+
+print(lista_letras)
+
+# ['L', 'A', 'C', 'A', 'S', 'A', 'E', 'S', 'R', 'O', 'J', 'A']
 ```
-
-
-
 </br></br></br>
 
 
