@@ -230,40 +230,173 @@ Para mayor información acerca del uso de condicionales en python consultar este
 
 # BUCLES
 
+Los bucles son estructuras que nos permiten modificar el flujo de ejecución del código repitiendo un bloque de código múltiples veces. A cada repetición se la denomina iteración.
+
+Existen dos tipos de bucles en python:
+
+- Bucles `for`: tienen un número definido de iteraciones
+- Bucles `while`: no tienen un número definido de iteraciones
+
+</br>
 
 
+### BUCLES *FOR*
 
-### ITERABLES E ITERADORES
+Los bucles *for* tienen un número definido de iteraciones ya que ejecutan el bloque de código una vez por cada elemento de un objeto iterable. Normalmente este suele ser una lista, una tupla, un diccionario, un set o incluso una cadena.
 
+La secuencia, iterables, cada iterador
 
+> The for loop does not require an indexing variable to set beforehand.
 
+```python
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+  print(x)
+```
 
-
-### BUCLES FOR
-
-
-
-### BUCLES WHILE
-
-
-
-### BUCLES ANIDADOS
-
-
-
-
-- Break y Continue
-- Iterar cadenas
-- for anidado xy
-- for al revés
-- Iterando cadena al revés. Haciendo uso de `[::-1]` se puede iterar la lista desde el último al primer elemento.
-
+strings
+```python
+for x in "banana":
+  print(x)
+```
+ranges  range(2, 6)
+```python
+for x in range(6):
+  print(x)
+```
 ```python
 texto = "Python"
 for i in texto[::-1]:
     print(i) #n,o,h,t,y,P
 ```
 
+
+</br>
+
+
+### BUCLES *WHILE*
+
+Con los bucles `while` podemos ejecutar un bloque de código siempre y cuando la condición se siga cumpliendo
+
+```python
+i = 1
+while i < 6:
+  print(i)
+  i += 1
+```
+```python
+x = ["Uno", "Dos", "Tres"]
+while x:
+    x.pop(0)
+    print(x)
+#['Dos', 'Tres']
+#['Tres']
+#[]
+```
+```python
+a, b = 0, 1
+while b < 25:
+    print(b)
+    a, b = b, a + b
+#1, 1, 2, 3, 5, 8, 13, 21 Fibonacci
+```
+
+
+
+Debemos tener cuidado de evitar los llamados bucles infinitos en los que el código 
+Variable de control que se asegura de que el bucle termine
+</br>
+
+
+### BUCLES ANIDADOS
+
+Podemos definir un bucle dentro de otro bucle. En este tipo de estructura el bucle interno se ejecuta una vez por cada iteración del bucle externo.
+
+```python
+adj = ["red", "big", "tasty"]
+fruits = ["apple", "banana", "cherry"]
+
+for x in adj:
+  for y in fruits:
+    print(x, y)
+```
+</br>
+
+
+### DECLARACIONES *BREAK* Y *CONTINUE*
+
+Se puede alterar el flujo normal de un bucle sin importar el punto de ejecución en el que se encuentre. Existen dos formas diferentes:
+
+- hacer que el bucle finalice directamente
+- hacer que la iteración actual finalice directamente y comience la siguiente
+</br>
+
+La palabra clave `break` rompe el flujo del bucle y este finaliza directamente. Podemos ver su uso en el ejemplo siguiente:
+
+```python
+i = 1
+while i < 6:
+  print(i)
+  if i == 3:
+    break
+  i += 1
+```
+```python
+x = 5
+while x > 0:
+    x -=1
+    print(x) #4,3,2,1,0
+else:
+    print("El bucle ha finalizado")
+```
+</br>
+
+La palabra clave `continue` termina de ejecutar la iteración actual y comienza directamente la siguiente. Se muestra un ejemplo de su uso a continuación:
+
+```python
+i = 0
+while i < 6:
+  i += 1 
+  if i == 3:
+    continue
+  print(i)
+```
+```python
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+  if x == "banana":
+    continue
+  print(x)
+```
+</br>
+
+
+### BLOQUE ELSE
+
+Ambos tipos de bucle permiten definir un bloque de código a ejecutar tras su finalización. En el caso del bucle *for* cuando todos los elementos han sido iterados y en el caso del bucle *while* cuando la condición deja de cumplirse. Este bloque de código se define con la palabra clave `else` tal y como vemos en el siguiente ejemplo:
+
+
+```python
+i = 1
+while i < 6:
+  print(i)
+  i += 1
+else:
+  print("i is no longer less than 6")
+```
+
+```python
+for x in range(6):
+  print(x)
+else:
+  print("Finally finished!")
+```
+
+Cabe destacar que si el bucle finaliza tras la ejecución de la sentencia `break` este bloque de código final no se ejecutará. Podemos ver un ejemplo de ello a continuación:
+
+```python
+
+```
 
 </br></br></br>
 
@@ -402,7 +535,19 @@ Para mayor información acerca del uso de listas de comprensión en python consu
 
 # ARGUMENTOS
 
-Los argumentos son la información que una función necesita para poder ejecutarse. A ser llamada esta 
+Los argumentos son la información que es pasada a una función para esta poder ser ejecutada. En la llamada los argumentos son especificados junto al nombre de la función dentro de paréntesis y separados por comas. En el caso de no pasar ningún argumento los paréntesis se dejan vacíos.  
+
+Vemos un ejemplo de uso de argumentos al llamar a una función en el ejemplo siguiente:
+
+```python
+def multiplicar(a, b, c):
+    return a * b * c
+
+print(multiplicar(10, 3, 4))
+
+#120
+```
+</br>
 
 
 ### ARGUMENTOS Y PARÁMETROS
@@ -412,79 +557,130 @@ Aunque ambos términos pueden emplearse indistintamente cada uno tiene un signif
 - Los **argumentos** son los valores que se pasan a la función cuando esta es llamada
 - Los **parámetros** son las variables presentes en la definición de la función y que posteriormente toman los valores de los argumentos pasados
 
-### NÚMERO DE ARGUMENTOS
-
 </br>
+
+
+### NÚMERO Y ORDEN DE ARGUMENTOS
+
+La cantidad de argumentos especificada en la llamada de la función siempre debe coincidir con la cantidad que esta espera. Igualmente hay que tener en cuenta que el orden de los argumentos debe ser el mismo en el que han sido definidos los parámetros.
+
+Vemos un ejemplo a continuación:
+```python
+def mi_funcion(primer_parametro, segundo_parametro, tercer_parametro):
+    print(f"{primer_parametro}, {segundo_parametro} y {tercer_parametro}")
+
+mi_funcion("primer_argumento", "segundo_argumento", "tercer_argumento")
+
+#primer_argumento, segundo_argumento y tercer_argumento
+```
+</br></br>
+
 
 ### VALORES POR DEFECTO
 
-Es posible tener argumentos con valor asignado por defecto.
+Es posible tener parámetros definidos con un valor por defecto en la función. En ese caso si un argumento no es pasado a la función el parámetro toma el valor asignado por defecto tal y como ocurre en el siguiente ejemplo:
 
 ```python
-(lambda a, b, c=3: a + b + c)(1, 2) # 6
+def numero_telefono(numero, prefijo = "+34"):
+    print(f"El teléfono es el ({prefijo}){numero}")
+
+numero_telefono(789456123)
+
+#El teléfono es el (+34)789456123
 ```
 </br>
 
 
 ### ARGUMENTOS CON NOMBRE
 
-También se pueden pasar los parámetros indicando su nombre.
+En el caso de conocer el nombre de cada parámetro de la función podemos especificar cada argumento mediante su nombre. En este caso el orden en el que pasamos los argumentos a la función no importa. Se muestra un ejemplo a continuación: 
 
 ```python
-(lambda a, b, c: a + b + c)(a=1, b=2, c=3) # 6
+def describir_objeto(tamaño, forma, color):
+    print(f"El objeto es {tamaño}, {forma} y de color {color}")
+
+describir_objeto(forma = "cuadrado", color = "naranja", tamaño = "grande")
+
+#El objeto es grande, cuadrado y de color naranja
 ```
 </br>
 
 
-### USO DE &nbsp;`*args`
+### ARGUMENTOS ARBITRARIOS
 
-Al igual que en las funciones se puede tener un número variable de argumentos haciendo uso de *, lo conocido como tuple unpacking.
-
-```python
-(lambda *args: sum(args))(1, 2, 3) # 6
-```
-</br>
-
-
-### USO DE &nbsp;`**kwargs`
-
-Y si tenemos los parámetros de entrada almacenados en forma de key y value como si fuera un diccionario, también es posible llamar a la función.
+La función puede tener definido un parámetro mediante la expresión `*args`. Esto indica que espera un número indeterminado de argumentos y al pasarlos a la función son tratados como una tupla. Es por ello que pueden ser iterados dentro del código de la función. Podemos ver un ejemplo de ello a continuación:
 
 ```python
-(lambda **kwargs: sum(kwargs.values()))(a=1, b=2, c=3) # 6
-```
-</br>
-
-
-### USO COMBINADO
-
-```python
-def funcion(a, b, *args, **kwargs):
-    print("a =", a)
-    print("b =", b)
+def suma(*args):
+    total = 0
     for arg in args:
-        print("args =", arg)
-    for key, value in kwargs.items():
-        print(key, "=", value)
+        total += arg
+    return total
 
-funcion(10, 20, 1, 2, 3, 4, x="Hola", y="Que", z="Tal")
-#Salida
-#a = 10
-#b = 20
-#args = 1
-#args = 2
-#args = 3
-#args = 4
-#x = Hola
-#y = Que
-#z = Tal
+print(suma(5, 3, 2, 7))
+
+#Salida 17
 ```
+</br>
+
+El uso del nombre `*args` es una convención, pudiendo ser usado cualquier otro siempre que este comience con el símbolo `*`. 
+</br></br>
 
 
+### ARGUMENTOS *KEYWORD* ARBITRARIOS
+
+La función puede tener definido un parámetro mediante la expresión `**kwargs`. Esto indica que espera un número indeterminado de argumentos del tipo clave-valor. Al pasarlos a la función estos son tratados como un diccionario tal y como vemos en el siguiente ejemplo:
+
+```python
+def duplicar_valores(**kwargs):
+    resultados = []
+    for key, value in kwargs.items():
+        resultados.append(f"{key} = {value * 2}")
+    return resultados
+    
+print(duplicar_valores(x = 6, y = 10, z = -3))
+
+#['x = 12', 'y = 20', 'z = -6']
+```
+</br>
+
+El uso del nombre `**kwargs` es una convención, pudiendo ser usado cualquier otro siempre que este comience con `**`. 
+</br></br>
 
 
+### USO COMBINADO DE TIPOS DE ARGUMENTOS
 
+Es posible mezclar argumentos normales con `*args` y `**kwargs` dentro de la misma función. Lo único que hay que tener en cuenta es que siempre deben ser definidos en el siguiente orden:
 
+- Primero argumentos normales
+- Después los argumentos `*args`
+- Y por último los argumentos `**kwargs`
+
+</br>
+
+Vemos un ejemplo del uso combinado de tipos de argumentos a continuación:
+
+```python
+def funcion_combinada(doble, triple, *animales, **colores):
+    print(doble * 2)
+    print(triple * 3)
+    for animal in animales:
+        print(animal)
+    for color in colores.values():
+        print("color " + color)
+
+funcion_combinada(10, 20, "perro", "gato", "cerdo", "vaca", color_1 ="rojo", color_2="verde", color_3 = "azul")
+
+#20
+#60
+#perro
+#gato
+#cerdo
+#vaca
+#color rojo
+#color verde
+#color azul
+```
 </br></br></br>
 
 
