@@ -573,7 +573,7 @@ mi_funcion("primer_argumento", "segundo_argumento", "tercer_argumento")
 
 #primer_argumento, segundo_argumento y tercer_argumento
 ```
-</br></br>
+</br>
 
 
 ### VALORES POR DEFECTO
