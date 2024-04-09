@@ -240,90 +240,126 @@ Existen dos tipos de bucles en python:
 </br>
 
 
-### BUCLES *FOR*
+### BUCLES FOR
 
-Los bucles *for* tienen un número definido de iteraciones ya que ejecutan el bloque de código una vez por cada elemento de un objeto iterable. Normalmente este suele ser una lista, una tupla, un diccionario, un set o incluso una cadena.
+Los bucles *for* ejecutan el bloque de código una vez por cada elemento de un objeto iterable. Normalmente este suele ser una lista, una tupla, un diccionario, un set o incluso una cadena. La cantidad de iteraciones a realizar viene predefinida en este caso por la cantidad de elementos existentes dentro del objeto.
 
-La secuencia, iterables, cada iterador
-
-> The for loop does not require an indexing variable to set beforehand.
+Para su definición debemos usar la palabra clave `for`, especificar el nombre que tomará el elemento en cada iteración, usar la palabra `in`, designar el objeto a iterar y finalmente emplear el símbolo `:`. A continuación se escribe el bloque de código a ejecutar correctamente indentado. Podemos ver su estructura en el siguiente esquema: 
 
 ```python
-fruits = ["apple", "banana", "cherry"]
-for x in fruits:
-  print(x)
+for [nombre elemento] in [objeto iterable]:
+    [bloque de código]
 ```
+</br>
 
-strings
-```python
-for x in "banana":
-  print(x)
-```
-ranges  range(2, 6)
-```python
-for x in range(6):
-  print(x)
-```
-```python
-texto = "Python"
-for i in texto[::-1]:
-    print(i) #n,o,h,t,y,P
-```
+Vemos un ejemplo de bucle *for* a continuación:
 
+```python
+lista_palabras = ["Atardecer", "Castillo", "Incienso"]
 
+for palabra in lista_palabras:
+    print(palabra)
+    
+#Atardecer
+#Castillo
+#Incienso
+```
+</br>
+
+En el siguiente ejemplo se itera un rango de valores para ejecutar el código el número de veces deseado:
+
+```python
+for iterador in range(4):
+    print(f"Esta iteración es la número {iterador + 1}")
+
+#Esta iteración es la número 1
+#Esta iteración es la número 2
+#Esta iteración es la número 3
+#Esta iteración es la número 4
+```
+</br>
+
+Los bucles *for* también pueden iterar una cadena de caracteres ejecutando el código para cada letra. Podemos ver un ejemplo de ello a continuación:
+
+```python
+lista_letras = []
+
+for letra in "PYTHON":
+    lista_letras.append(letra.lower())
+
+print(lista_letras)
+
+#['p', 'y', 't', 'h', 'o', 'n']
+```
 </br>
 
 
-### BUCLES *WHILE*
+### BUCLES WHILE
 
-Con los bucles `while` podemos ejecutar un bloque de código siempre y cuando la condición se siga cumpliendo
+Con los bucles *while* podemos ejecutar un bloque de código un número indeterminado de veces siempre y cuando se cumpla una condición previamente definida. Esta condición es evaluada al comienzo de cada iteración y debemos asegurarnos de que en algún momento esta condición deje de cumplirse.
+
+Para su definición empezamos con la palabra clave `while`, después escribimos la condición a evaluar y terminamos con el símbolo `:`. A continuación se debe especificar el bloque de código a ejecutar correctamente indentado. Podemos ver su estructura en el siguiente esquema: 
 
 ```python
-i = 1
-while i < 6:
-  print(i)
-  i += 1
+while [condición]:
+    [bloque de código]
 ```
+</br>
+
+Podemos ver un ejemplo de uso de un bucle *while* a continuación:
+
 ```python
-x = ["Uno", "Dos", "Tres"]
-while x:
-    x.pop(0)
-    print(x)
-#['Dos', 'Tres']
-#['Tres']
-#[]
+semana = []
+
+while len(semana) < 7:
+    semana.append(f"D{len(semana) + 1}")
+
+print(semana)
+
+#['D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7']
 ```
+</br>
+
+Si durante la ejecución del bucle la condición no se deja de cumplir en alguna de las iteraciones, se producirá un bucle infinito y no podrá continuar ejecutándose el resto del programa.
+
+Es por ello que en esta clase de bucles suele ser frecuente la definición de una variable de indexado. Esta se define antes del bucle y nos permite partir de un valor de referencia para poder controlar las iteraciones realizadas. Vemos un ejemplo de ello a continuación:
+
 ```python
-a, b = 0, 1
-while b < 25:
-    print(b)
-    a, b = b, a + b
-#1, 1, 2, 3, 5, 8, 13, 21 Fibonacci
+i = 0
+
+while i < 50:
+    i += 1
+  
+print(i)
+
+#50
 ```
-
-
-
-Debemos tener cuidado de evitar los llamados bucles infinitos en los que el código 
-Variable de control que se asegura de que el bucle termine
 </br>
 
 
 ### BUCLES ANIDADOS
 
-Podemos definir un bucle dentro de otro bucle. En este tipo de estructura el bucle interno se ejecuta una vez por cada iteración del bucle externo.
+Podemos definir un bucle dentro de otro bucle. En este tipo de estructuras el bucle interno se ejecuta una vez por cada iteración del bucle externo, tal y como se observa en el siguiente ejemplo:
 
 ```python
-adj = ["red", "big", "tasty"]
-fruits = ["apple", "banana", "cherry"]
+filas = [*range(1,5)]
+columnas = [*range(1,6)] 
 
-for x in adj:
-  for y in fruits:
-    print(x, y)
+for fila in filas:
+    fila_actual = []
+    for columna in columnas:
+        fila_actual.append(columna + fila)  
+    print(fila_actual)
+    
+#[2, 3, 4, 5, 6]
+#[3, 4, 5, 6, 7]
+#[4, 5, 6, 7, 8]
+#[5, 6, 7, 8, 9]
 ```
 </br>
 
 
-### DECLARACIONES *BREAK* Y *CONTINUE*
+### DECLARACIONES BREAK Y CONTINUE
 
 Se puede alterar el flujo normal de un bucle sin importar el punto de ejecución en el que se encuentre. Existen dos formas diferentes:
 
@@ -334,39 +370,31 @@ Se puede alterar el flujo normal de un bucle sin importar el punto de ejecución
 La palabra clave `break` rompe el flujo del bucle y este finaliza directamente. Podemos ver su uso en el ejemplo siguiente:
 
 ```python
-i = 1
-while i < 6:
-  print(i)
-  if i == 3:
-    break
-  i += 1
-```
-```python
-x = 5
-while x > 0:
-    x -=1
-    print(x) #4,3,2,1,0
-else:
-    print("El bucle ha finalizado")
+iteraciones = 0
+
+while iteraciones < 10:
+    if iteraciones == 5:
+        break
+    iteraciones += 1
+   
+print(iteraciones)
+
+#5
 ```
 </br>
 
 La palabra clave `continue` termina de ejecutar la iteración actual y comienza directamente la siguiente. Se muestra un ejemplo de su uso a continuación:
 
 ```python
-i = 0
-while i < 6:
-  i += 1 
-  if i == 3:
-    continue
-  print(i)
-```
-```python
-fruits = ["apple", "banana", "cherry"]
-for x in fruits:
-  if x == "banana":
-    continue
-  print(x)
+lista_frutas = ["manzana", "plátano", "fresa", "piña",]
+for fruta in lista_frutas:
+    if fruta == "plátano":
+        continue
+    print(fruta)
+    
+#manzana
+#fresa
+#piña
 ```
 </br>
 
@@ -375,29 +403,33 @@ for x in fruits:
 
 Ambos tipos de bucle permiten definir un bloque de código a ejecutar tras su finalización. En el caso del bucle *for* cuando todos los elementos han sido iterados y en el caso del bucle *while* cuando la condición deja de cumplirse. Este bloque de código se define con la palabra clave `else` tal y como vemos en el siguiente ejemplo:
 
-
 ```python
-i = 1
-while i < 6:
-  print(i)
-  i += 1
-else:
-  print("i is no longer less than 6")
-```
+cuenta = 0
 
-```python
-for x in range(6):
-  print(x)
+for x in range(1000):
+    cuenta += 1
 else:
-  print("Finally finished!")
+    print(f"Bucle finalizado tras {cuenta} iteraciones")
+  
+#Bucle finalizado tras 1000 iteraciones  
 ```
+</br>
 
 Cabe destacar que si el bucle finaliza tras la ejecución de la sentencia `break` este bloque de código final no se ejecutará. Podemos ver un ejemplo de ello a continuación:
 
 ```python
+joyas = ["esmeralda", "rubí", "diamante", "zafiro", "amatista"]
 
+while joyas:
+    if joyas.pop() == "diamante":
+        break
+else:
+    joyas = []
+
+print(joyas)
+  
+#['esmeralda', 'rubí'] 
 ```
-
 </br></br></br>
 
 
