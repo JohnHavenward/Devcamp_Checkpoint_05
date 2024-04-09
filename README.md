@@ -803,18 +803,148 @@ Para mayor información acerca del uso de funciones Lambda en python consultar e
 
 # PAQUETES PIP
 
+Para poder entender qué es un paquete PIP debemos entender primero los siguientes dos conceptos:
+
+- Un paquete es un conjunto de archivos necesarios para un módulo python
+- PIP es un sistema de gestor de paquetes para python
+
+</br>
 
 
+### MÓDULOS PYTHON
+
+Un módulo es una librería de código python que podemos incluir en nuestro proyecto. Puede ser desde un solo fichero `.py` hasta un paquete de archivos. Estos módulos incluyen un conjunto de funciones, variables o clases que pueden aportarnos soluciones y nos ahorren así trabajo y tiempo de desarrollo.
+
+Algunos módulos existen dentro de python y los podemos importar directamente a nuestro proyecto. En en siguiente enlace a la documentación oficial podemos encontrar una lista completa:
+
+- [Lista de módulos preinstalados en python](https://docs.python.org/3/py-modindex.html).
+</br></br>
+
+Sin embargo existe una cantidad mucho mayor de módulos creados por la comunidad de desarrolladores de python que también podemos incluir en nuestros proyectos. Son los llamados módulos externos y la principal diferencia es que estos deben ser instalados antes de poder ser importados. Podemos encontrar muchos de ellos en el siguiente enlace:
+
+- [El Índice de paquetes de Python (PyPI)](https://pypi.org).
+</br></br>
 
 
+#### *Importar módulos*
+
+Imaginemos que tenemos el siguiente archivo llamado `mi_modulo.py` y tiene las funciones `suma()` y `resta()` definidas en él:
+
+```python
+# mi_modulo.py
+def suma(a, b):
+    return a + b
+
+def resta(a, b):
+    return a - b
+```
+</br>
+
+Ese archivo esta localizado en la carpeta de nuestro proyecto y deseamos añadirlo al archivo en el que estamos trabajando. Para importar ese módulo y poder usar sus funciones debemos emplear la palabra clave `import` tal y como vemos a continuación:
+
+```python
+import mi_modulo
+
+print(mi_modulo.suma(7, 2)) #9
+print(mi_modulo.resta(10, 7)) #3
+```
+</br>
 
 
+#### *Importar componentes*
+
+Se puede importar directamente los componentes que nos interesen evitando así tener que incluir el nombre del módulo cada vez que hacemos uso del componente. Vemos un ejemplo a continuación:
+
+```python
+from mi_modulo import suma, resta
+
+print(suma(7, 2)) #9
+print(resta(10, 7)) #3
+```
+</br>
+
+También podemos importar todos los componentes definidos dentro del módulo usando el símbolo `*` tal y como se muestra a continuación:
+
+```python
+from mi_modulo import *
+
+print(suma(7, 2)) #9
+print(resta(10, 7)) #3
+```
+</br>
 
 
+#### *Renombrar módulos*
+
+En ocasiones un módulo puede tener un nombre demasiado largo o darse el caso de que exista otro módulo con el mismo nombre. En ese tipo de situaciones tenemos la posibilidad de renombrar el módulo al importarlo a nuestro archivo y darle un nuevo nombre. Podemos ver un ejemplo de ello a continuación: 
+
+```python
+import mi_modulo as m
+
+print(m.suma(7, 2)) #9
+print(m.resta(10, 7)) #3
+```
+</br>
 
 
+#### *Importar módulos en subcarpetas*
+
+Imaginemos que el módulo a importar se encuentra dentro de una subcarpeta de nuestro proyecto tal y como se muestra en el siguiente esquema:
+
+```terminal
+.
+├── ejemplo.py
+├── carpeta
+│   └── mi_modulo.py
+```
+</br>
+
+En este caso debemos especificar la ruta del archivo separada por `.` junto al nombre del módulo tal y como se ve el el siguiente ejemplo:
+
+```python
+from carpeta.modulo import *
+print(hola())
+# Hola
+```
+</br>
 
 
+### PIP
+
+PIP es un gestor de paquetes de python que nos permite descargar e instalar módulos externos en nuestro sistema. Una vez instalados podremos incluir estos en nuestros proyectos. También nos permite llevar un control de las versiones de los paquetes instalados y poder actualizarlos.
+
+Una vez hemos instalado PIP en nuestro sistema podemos usar el siguiente comando de la terminal para instalar el paquete deseado:
+
+```console
+pip install nombre_paquete
+```
+</br>
+
+Para mostrar una lista completa de los paquetes PIP instados y sus respectivas versiones debemos usar el siguiente comando:
+
+```console
+pip list
+```
+</br>
+
+Para desinstalar un paquete debemos usar el siguiente comando:
+
+```console
+pip uninstall nombre_paquete
+```
+</br>
+
+Para actualizar un paquete debemos usar el siguiente comando:
+
+```console
+pip install --upgrade nombre_paquete
+```
+</br>
+
+
+#### *pipenv*
+
+La herramienta *pipenv* resulta muy útil ya que nos permite crear entornos de trabajo independientes para cada unos de nuestros proyectos. La principal ventaja es que esto nos permite hacer uso de diferentes versiones del mismo paquete en cada uno de ellos.
 </br></br></br>
 
 
