@@ -132,7 +132,7 @@ or | al menos una de las dos condiciones se cumple
 not | la condición no se cumple
 </br>
 
-A continuación se muestran algunos ejemplos de su uso
+A continuación se muestran algunos ejemplos de su uso:
 
 ```python
 print(True and True) #True
@@ -201,7 +201,7 @@ else:
 
 ### OPERADOR TERNARIO
 
-Mediante un operador ternario podemos definir una condición y el código a ejecutar cuando se cumple al igual que otro alternativo para cuando no se cumple. En resumen se trata de una expresión if-else escrita de forma abreviada en una sola línea. En un operador ternario Siempre se ejecuta uno de los dos códigos y su estructura es la siguiente:
+Mediante un operador ternario podemos definir una condición y el código a ejecutar cuando se cumple al igual que otro alternativo para cuando no se cumple. En resumen se trata de una expresión *if-else* escrita de forma abreviada en una sola línea. En un operador ternario Siempre se ejecuta uno de los dos códigos y su estructura es la siguiente:
 
 ```python
 [código si se cumple] if [condición] else [código si no se cumple]
@@ -221,7 +221,7 @@ print("El usuario es mayor de edad" if edad_usuario >= 18 else "El usuario es me
 
 
 **NOTA:**</br>
-Para mayor información acerca del uso de condicionales en python consultar este [enlace](https://www.w3schools.com/python/python_conditions.asp).
+Para mayor información acerca del uso de condicionales en python consultar este [enlace](https://www.w3schools.com/python/python_conditions.asp)
 </br></br></br></br></br>
 
 
@@ -365,7 +365,7 @@ Se puede alterar el flujo normal de un bucle sin importar el punto de ejecución
 
 - hacer que el bucle finalice directamente
 - hacer que la iteración actual finalice directamente y comience la siguiente
-</br>
+</br></br>
 
 La palabra clave `break` rompe el flujo del bucle y este finaliza directamente. Podemos ver su uso en el ejemplo siguiente:
 
@@ -434,9 +434,9 @@ print(joyas)
 
 
 **NOTA:**</br>
-Para mayor información acerca del uso de bucles `for` en python consultar este [enlace](https://www.w3schools.com/python/python_for_loops.asp).
+Para mayor información acerca del uso de bucles *for* en python consultar este [enlace](https://www.w3schools.com/python/python_for_loops.asp)
 
-Para mayor información acerca del uso de bucles `while` en python consultar este [enlace](https://www.w3schools.com/python/python_while_loops.asp).
+Para mayor información acerca del uso de bucles *while* en python consultar este [enlace](https://www.w3schools.com/python/python_while_loops.asp)
 </br></br></br></br></br>
 
 
@@ -447,9 +447,9 @@ Para mayor información acerca del uso de bucles `while` en python consultar est
 
 Las listas de comprensión son una forma abreviada de de crear una lista a partir de otra modificando los elementos de esta y pudiendo comprobar la condición deseada para cada uno de ellos.
 
-Las comprensiones de listas, sets o diccionarios son una herramienta muy útil para hacer que nuestro código resulte más compacto y fácil de leer. Siempre que tengamos una colección iterable que queramos modificar, son una buena opción para evitar tener que escribir bucles for.
+Las comprensiones de listas, sets o diccionarios son una herramienta muy útil para hacer que nuestro código resulte más compacto y fácil de leer. Siempre que tengamos una colección iterable que queramos modificar son una buena opción para evitar tener que escribir bucles *for*.
 
-Nos permiten hacer todo ello en una sola línea de código tal como vemos en el siguiente ejemplo, en el cual 
+Vemos un ejemplo del uso de una lista de compresión a continuación:
 
 ```python
 lista_numeros = [7, 13, 10, 15, 8, 51, 32]
@@ -462,7 +462,7 @@ print(numeros_impares)
 ```
 </br>
 
-En caso de no usar una lista por comprensión el código es más largo y no resulta tan fácil de leer a simple vista. Vemos a continuación un bloque de código equivalente.
+En caso de no usar una lista por comprensión el código es más largo y no resulta tan fácil de leer a simple vista. Vemos a continuación un bloque de código equivalente:
 
 ```python
 lista_numeros = [7, 13, 10, 15, 8, 51, 32]
@@ -481,7 +481,7 @@ print(numeros_impares)
 
 ### SINTAXIS
 
-La sintaxis de una lista por comprensión es la que vemos a continuación
+La sintaxis de una lista por comprensión es la que vemos a continuación:
 
 ```python
 lista_nueva = [expresión for elemento in iterable if condición]
@@ -524,7 +524,7 @@ Es el nombre dado al elemento en cada iteración.
 
 Es la expresión que se ejecuta cuando el elemento iterado cumple la condición. Esta no tiene por qué guardar relación con el elemento iterado, pudiendo ser una palabra o valor concreto por ejemplo.
 
-La expresión también puede ser una llamada a una función como en el siguiente ejemplo:
+La expresión también puede ser una llamada a una función como se ve en el siguiente ejemplo:
 
 ```python
 lista_numeros = [0, 1, 2, 3, 4, 5]
@@ -543,7 +543,7 @@ print(numeros_cubos)
 
 #### *Condición*
 
-La condición es opcional y puede ser omitida en la lista de comprensión. En tal caso la expresión es ejecutada para todos los elementos del objeto iterable.
+La condición es opcional y puede ser omitida en la lista por comprensión. En tal caso la expresión es ejecutada para todos los elementos del objeto iterable. Vemos un ejemplo a continuación:
 
 ```python
 mi_frase = "La casa es roja"
@@ -558,7 +558,7 @@ print(lista_letras)
 
 
 **NOTA:**</br>
-Para mayor información acerca del uso de listas de comprensión en python consultar este [enlace](https://www.w3schools.com/python/python_lists_comprehension.asp).
+Para mayor información acerca del uso de listas por comprensión en python consultar este [enlace](https://www.w3schools.com/python/python_lists_comprehension.asp)
 </br></br></br></br></br>
 
 
@@ -659,7 +659,7 @@ El uso del nombre `*args` es una convención, pudiendo ser usado cualquier otro 
 </br></br>
 
 
-### ARGUMENTOS *KEYWORD* ARBITRARIOS
+### ARGUMENTOS KEYWORD ARBITRARIOS
 
 La función puede tener definido un parámetro mediante la expresión `**kwargs`. Esto indica que espera un número indeterminado de argumentos del tipo clave-valor. Al pasarlos a la función estos son tratados como un diccionario tal y como vemos en el siguiente ejemplo:
 
@@ -717,7 +717,7 @@ funcion_combinada(10, 20, "perro", "gato", "cerdo", "vaca", color_1 ="rojo", col
 
 
 **NOTA:**</br>
-Para mayor información acerca del uso de argumentos en python consultar este [enlace](https://www.w3schools.com/python/gloss_python_function_arguments.asp).
+Para mayor información acerca del uso de argumentos en python consultar este [enlace](https://www.w3schools.com/python/gloss_python_function_arguments.asp)
 </br></br></br></br></br>
 
 
@@ -731,7 +731,9 @@ Las funciones lambda, también llamadas anónimas, son una forma abreviada de de
 ```python
 producto = lambda a, b, c : a * b * c
 
-print(producto(4, 3, 6)) #72
+print(producto(4, 3, 6))
+
+#72
 ```
 </br>
 
@@ -742,15 +744,17 @@ En el ejemplo siguiente se muestra el código equivalente usando una función no
 def producto(a, b, c):
     return a * b * c
     
-print(producto(4, 3, 6)) #72
+print(producto(4, 3, 6))
+
+#72
 ```
 </br>
 
 
-La sintaxis de una función lambda es la siguiente:
+La estructura de una función lambda es la siguiente:
 
 ```python
-variable = lambda argumentos : expresión
+[variable] = lambda [parámetros] : [expresión]
 ```
 </br>
 
@@ -759,10 +763,10 @@ En el caso de las funciones lambda se omite el paso de ser nombradas, por lo que
 
 Su principal limitación frente a una función normal de python es que solo pueden evaluar una única expresión. Pese a ello, las funciones lambda también pueden aceptar cualquier número de argumentos e igualmente permiten:
 
-- dar un valor por defecto a los argumentos
+- dar un valor por defecto a los parámetros
 - poder pasar los argumentos especificando su nombre  
-- el uso de `*args` (*argument unpacking*)
-- el uso de `**kwargs` (*keyword arguments*)
+- el uso de parámetros `*args`
+- el uso de parámetros `**kwargs`
 
 </br>
 
@@ -781,7 +785,7 @@ Es posible combinar ambos tipos de funciones. En el ejemplo siguiente una funci�
 
 ```python
 def potencia(n):
-  return lambda a : a ** n
+    return lambda a : a ** n
 
 elevar_al_cuadrado = potencia(2)
 elevar_al_cubo = potencia(3)
@@ -794,7 +798,7 @@ print(elevar_al_cubo(2)) #8
 
 
 **NOTA:**</br>
-Para mayor información acerca del uso de funciones Lambda en python consultar este [enlace](https://www.w3schools.com/python/python_lambda.asp).
+Para mayor información acerca del uso de funciones lambda en python consultar este [enlace](https://www.w3schools.com/python/python_lambda.asp)
 </br></br></br></br></br>
 
 
@@ -817,12 +821,12 @@ Un módulo es una librería de código python que podemos incluir en nuestro pro
 
 Algunos módulos existen dentro de python y los podemos importar directamente a nuestro proyecto. En en siguiente enlace a la documentación oficial podemos encontrar una lista completa:
 
-- [Lista de módulos preinstalados en python](https://docs.python.org/3/py-modindex.html).
+- [Lista de módulos preinstalados en python](https://docs.python.org/3/py-modindex.html)
 </br></br>
 
 Sin embargo existe una cantidad mucho mayor de módulos creados por la comunidad de desarrolladores de python que también podemos incluir en nuestros proyectos. Son los llamados módulos externos y la principal diferencia es que estos deben ser instalados antes de poder ser importados. Podemos encontrar muchos de ellos en el siguiente enlace:
 
-- [El Índice de paquetes de Python (PyPI)](https://pypi.org).
+- [El Índice de paquetes de Python (PyPI)](https://pypi.org)
 </br></br>
 
 
@@ -831,7 +835,8 @@ Sin embargo existe una cantidad mucho mayor de módulos creados por la comunidad
 Imaginemos que tenemos el siguiente archivo llamado `mi_modulo.py` y tiene las funciones `suma()` y `resta()` definidas en él:
 
 ```python
-# mi_modulo.py
+#mi_modulo.py
+
 def suma(a, b):
     return a + b
 
@@ -843,6 +848,8 @@ def resta(a, b):
 Ese archivo esta localizado en la carpeta de nuestro proyecto y deseamos añadirlo al archivo en el que estamos trabajando. Para importar ese módulo y poder usar sus funciones debemos emplear la palabra clave `import` tal y como vemos a continuación:
 
 ```python
+#otro_archivo.py
+
 import mi_modulo
 
 print(mi_modulo.suma(7, 2)) #9
@@ -876,7 +883,7 @@ print(resta(10, 7)) #3
 
 #### *Renombrar módulos*
 
-En ocasiones un módulo puede tener un nombre demasiado largo o darse el caso de que exista otro módulo con el mismo nombre. En ese tipo de situaciones tenemos la posibilidad de renombrar el módulo al importarlo a nuestro archivo y darle un nuevo nombre. Podemos ver un ejemplo de ello a continuación: 
+En ocasiones un módulo puede tener un nombre demasiado largo o darse el caso de que exista otro módulo ya importado con el mismo nombre. En ese tipo de situaciones tenemos la posibilidad de renombrar el módulo al importarlo a nuestro archivo y darle un nuevo nombre. Podemos ver un ejemplo de ello a continuación: 
 
 ```python
 import mi_modulo as m
@@ -902,9 +909,10 @@ Imaginemos que el módulo a importar se encuentra dentro de una subcarpeta de nu
 En este caso debemos especificar la ruta del archivo separada por `.` junto al nombre del módulo tal y como se ve el el siguiente ejemplo:
 
 ```python
-from carpeta.modulo import *
-print(hola())
-# Hola
+from carpeta.mi_modulo import *
+
+print(suma(7, 2)) #9
+print(resta(10, 7)) #3
 ```
 </br>
 
@@ -920,21 +928,21 @@ pip install nombre_paquete
 ```
 </br>
 
-Para mostrar una lista completa de los paquetes PIP instados y sus respectivas versiones debemos usar el siguiente comando:
+Para mostrar una lista completa de los paquetes PIP instalados y sus respectivas versiones debemos usar este otro:
 
 ```console
 pip list
 ```
 </br>
 
-Para desinstalar un paquete debemos usar el siguiente comando:
+Para desinstalar un paquete:
 
 ```console
 pip uninstall nombre_paquete
 ```
 </br>
 
-Para actualizar un paquete debemos usar el siguiente comando:
+Para actualizar un paquete:
 
 ```console
 pip install --upgrade nombre_paquete
@@ -944,9 +952,11 @@ pip install --upgrade nombre_paquete
 
 #### *pipenv*
 
-La herramienta *pipenv* resulta muy útil ya que nos permite crear entornos de trabajo independientes para cada unos de nuestros proyectos. La principal ventaja es que esto nos permite hacer uso de diferentes versiones del mismo paquete en cada uno de ellos.
+La herramienta *pipenv* resulta muy útil ya que nos da la posibilidad de crear entornos de trabajo independientes para cada uno de nuestros proyectos. La principal ventaja es que esto nos permite hacer uso de diferentes versiones del mismo paquete en cada uno de ellos. 
+
+El desarrollo de proyectos grandes tiende a incluir un número elevado de módulos, los cuales pueden entrar en conflicto tras futuras actualizaciones de alguno de estos. Es por ello que resulta de vital importancia realizar un control de dependencias con *pipenv* para poder hacer un seguimiento de los módulos y sus versiones incluidos en cada proyecto.
 </br></br></br>
 
 
 **NOTA:**</br>
-Para mayor información acerca del uso de paquetes pip en python consultar este [enlace](https://www.w3schools.com/python/python_pip.asp).
+Para mayor información acerca del uso de paquetes PIP en python consultar este [enlace](https://www.w3schools.com/python/python_pip.asp)
